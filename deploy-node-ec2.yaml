@@ -2,7 +2,7 @@
 - name: Install node and npm
   hosts: ec2
   become: yes
-  become_user: root
+  gather_facts: False
   tasks:
     - name: Update package cache
       vars:
@@ -20,9 +20,8 @@
 
     - name: Install Node.js
       shell: | 
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-        . ~/.nvm/nvm.sh
-        nvm install 16
+        curl -sL https://rpm.nodesource.com/setup_16.x | sudo -E bash -
+        sudo yum install -y nodejs
 
 - name: Create new linux user for node app
   hosts: ec2
@@ -39,7 +38,7 @@
 
 - name: Deploy nodejs app
   hosts: ec2
-  become: True
+  become: yes
   become_user: "{{linux_name}}"
   vars_files:
     - vars-projects
