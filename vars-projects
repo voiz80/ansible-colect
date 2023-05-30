@@ -1,0 +1,5 @@
+version: 1.0.0
+ansible_python_interpreter: /usr/bin/python3 
+location: ~/ansible-colect/ 
+linux_name: ivo
+user_home_dir: /home/{{linux_name}}
