@@ -1,3 +1,4 @@
+# Install NodeJs and npm on Amazon Linux 2. Create user and add groups: adm. Deploy nodejs app. Unpack the nodejs file.Install dependencies. Start server.
 ---
 - name: Install node and npm
   hosts: ec2
