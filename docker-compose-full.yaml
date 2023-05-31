@@ -1,0 +1,7 @@
+version: '3'
+services:
+  cpu-memory-utilization:
+    image: voiz80/my-repo:game2048-1.0
+    container_name: my-gqame2048
+    ports:
+      - 80:80
