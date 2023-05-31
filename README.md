@@ -9,3 +9,6 @@ Generate *.pem key from ec2 instance and downloaded on ansible host and set the 
 
 ### Usage example
     ansible-playbook deploy-node-ec2.yaml 
+
+### deploy-docker-ec2-user
+Deploy game2048
