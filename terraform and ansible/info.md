@@ -1,4 +1,4 @@
-# ansible-colect - Terraform & Ansible
+# ansible-collect - Terraform & Ansible
 Collections playbook for deploy, managing and etc.
 
 ### Terraform with Ansible
