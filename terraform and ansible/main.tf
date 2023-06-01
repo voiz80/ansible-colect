@@ -129,7 +129,7 @@ resource "aws_instance" "myapp-server" {
     Name = "${var.env_prefix}-server"
   }
   provisioner "local-exec" {
-    working_dir = "~/ansible-colect"
+    working_dir = ". "  # set your path
     command = "ansible-playbook --inventory ${self.public_ip}, --private-key ${var.ssh_key_private} --user ec2-user deploy-docker-ec2-user-terraform.yaml"
   }
 
