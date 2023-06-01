@@ -128,11 +128,17 @@ resource "aws_instance" "myapp-server" {
   tags = {
     Name = "${var.env_prefix}-server"
   }
-  provisioner "local-exec" {
-    working_dir = ". "  # set your path
-    command = "ansible-playbook --inventory ${self.public_ip}, --private-key ${var.ssh_key_private} --user ec2-user deploy-docker-ec2-user-terraform.yaml"
-  }
 
+}
+
+resource "null_resource" "configure_server" {
+  triggers = {
+   triggers = aws_instance.myapp-server.public_ip
+  }
+  provisioner "local-exec" {
+    working_dir = "./ "  # set your path if needed
+    command = "ansible-playbook --inventory ${aws_instance.myapp-server.public_ip}, --private-key ${var.ssh_key_private} --user ec2-user deploy-docker-ec2-user-terraform.yaml"
+  }
 }
 
 
