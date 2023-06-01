@@ -1,0 +1,13 @@
+---
+plugin: aws_ec2
+regions: 
+  - eu-central-1
+# keyed_groups: # Group them
+#   - key: tags
+#     prefix: tag
+#   - key: instance_type
+#     prefix: instance_type
+
+# filters:   # filter by tagName
+#   tagName: dev*
+#   instance-state-name: running
