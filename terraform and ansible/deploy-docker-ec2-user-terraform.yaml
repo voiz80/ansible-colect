@@ -1,5 +1,20 @@
 # Install Pyhon3. docker, docker-compose on Amazon Linux 2. Add user in groups: adm. Start docker. Pull docker image from private repo. Start game2048
 ---
+- name: Wait for ssh connection # add timing issue
+  host: all
+  gather_facts: False
+  tasks: 
+    - name: Ensure ssh port open
+      wait_for:
+        port: 22
+        delay: 10 # 10 sec
+        timout: 100
+        host: '{{ (ansible_ssh_host|defoult(ansible_host))|defoult(inventory_hostname) }}'
+      vars:
+      ansible_connection: local
+      ansible_python_interpreter: /usr/bin/python
+
+
 - name: Install python3, docker, docker-compose
   hosts: all
   become: yes
